@@ -13,6 +13,7 @@ const Navbar = styled.div`
         justify-center
         items-center
         py-1
+        fixed
     `};
 `;
 
@@ -39,9 +40,21 @@ export const Search = styled.input`
 
 export const Icon = styled.i`
     color: #657685;
+
+    &:hover {
+        color: #1EA1F2;
+    }
+
     ${tw`
         mr-16
     `}
+
+    ${props =>
+        props.active &&
+        css`
+            color: #1EA1F2;
+        `
+    }
 
     ${props => 
         props.user &&
@@ -56,6 +69,33 @@ export const Icon = styled.i`
         css`
             margin-left: 0;
             margin-right: 0.5rem;
+        `
+    }
+
+    ${props =>
+        props.retweet &&
+        css`
+            &:hover {
+                color: #17BF63;
+            }
+        `
+    }
+
+    ${props =>
+        props.like &&
+        css`
+            &:hover {
+                color: #E23066;
+            }
+        `
+    }
+
+    ${props =>
+        props.nohover &&
+        css`
+            &:hover {
+                color: #657685;
+            }
         `
     }
 `;
@@ -77,14 +117,14 @@ const NavBar = () => {
     return (
         <Navbar>
             <div>
-                <Icon className="fas fa-home fa-lg"></Icon>
+                <Icon active className="fas fa-home fa-lg"></Icon>
                 <Icon className="fas fa-hashtag fa-lg"></Icon>
                 <Icon className="fas fa-bell fa-lg"></Icon>
                 <Icon className="fas fa-envelope fa-lg"></Icon>
             </div>
             <Search placeholder="Search Twitter" />
             <Flexdiv>
-                <Icon user className="fas fa-user-circle fa-2x"></Icon>
+                <Icon user nohover className="fas fa-user-circle fa-2x"></Icon>
                 <Username>Chris</Username>
             </Flexdiv>
         </Navbar>

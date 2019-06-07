@@ -9,10 +9,10 @@ import Post from './Post';
 
 const PostContainerStyle = styled.div`
     width: 600px;
+    margin-top: 4.1rem;
 
     ${tw`
         flex
-        mt-2
         flex-col
         bg-white
         rounded
@@ -34,9 +34,12 @@ const HeaderTitle = styled.h1`
 
 const Status = styled.div`
     border-bottom: 1px solid #E6ECF0;
+    &:hover {
+        background-color: #F5F8FA;
+    }
 
     ${tw`
-        py-3
+        py-4
         pr-4
         flex
     `}
@@ -48,7 +51,7 @@ const PostContainer = props => {
             <Header>
                 <HeaderTitle>Home</HeaderTitle>
                 <Status>
-                    <Icon user className="fas fa-user-circle fa-2x"></Icon>
+                    <Icon user nohover className="fas fa-user-circle fa-2x"></Icon>
                     <Search status placeholder="What's Happening?"></Search>
                 </Status>
             </Header>
